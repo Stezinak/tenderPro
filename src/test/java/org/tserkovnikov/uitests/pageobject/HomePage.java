@@ -20,11 +20,14 @@ public class HomePage {
     @FindBy(xpath = "//div[@class='formHolder']//form[@name='loginForm']")
     private WebElement failedAuthorization;
 
+    @FindBy(xpath = "//img[@alt='Бесплатная регистрация']")
+    private WebElement freeRegistrationButton;
+
     public boolean isHomepageLoaded() {
         return logoutForm.isDisplayed();
     }
 
     public boolean isAuthorizationFailed() {
-        return failedAuthorization.isDisplayed();
+        return freeRegistrationButton.isDisplayed();
     }
 }

@@ -1,7 +1,9 @@
 package org.tserkovnikov.uitests.tests;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.tserkovnikov.uitests.helpers.TestConstants;
 import org.tserkovnikov.uitests.pageobject.LoginPage;
@@ -14,7 +16,7 @@ public class BaseTest {
     LoginPage loginPage;
     TestContext context;
 
-    @BeforeTest
+    @BeforeMethod
     public void setup() throws IOException {
         TestContextFactory factory = new TestContextFactory();
         this.context = factory.create();
@@ -22,7 +24,7 @@ public class BaseTest {
         this.loginPage = new LoginPage(context.getDriver(), TestConstants.URL);
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
         WebDriver driver = context.getDriver();
         driver.quit();
